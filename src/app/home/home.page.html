@@ -1,18 +1,40 @@
-<ion-content class="ion-padding">
-  <div class="container">
-    <h1>Calculadora de Múltiplos</h1>
-    <ion-item lines="none">
-      <ion-input type="number" [(ngModel)]="inputNumber" placeholder="Ingresa un número"></ion-input>
-    </ion-item>
-    <ion-button expand="block" (click)="findMultiples()" class="ion-margin-top">Calcular</ion-button>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Buscador de Múltiplos</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-    <!-- Nueva visualización con CSS Grid -->
-    <div *ngIf="results" class="grid-container">
-      <div *ngFor="let result of results" class="grid-item" [style.color]="result.color">
+<ion-content>
+  <div class="content-container">
+    <h1>Ingresa un número</h1>
+    
+    <div class="input-wrapper">
+      <ion-item>
+        <ion-label position="stacked">Número</ion-label>
+        <ion-input
+          type="number"
+          [value]="inputNumber"
+          (ionInput)="handleInput($event)"
+          placeholder="Ingrese un número"
+          min="0">
+        </ion-input>
+      </ion-item>
+    </div>
+
+    <ion-button expand="block" (click)="findMultiples()">
+      Calcular Múltiplos
+    </ion-button>
+
+    <div class="grid-container">
+      <div 
+        class="grid-item" 
+        *ngFor="let result of results" 
+        [style.color]="result.color"
+      >
         {{ result.number }}
-        <span *ngIf="result.multiples.length > 0">
+        <div class="multiples" *ngIf="result.multiples.length > 0">
           [{{ result.multiples.join(', ') }}]
-        </span>
+        </div>
       </div>
     </div>
   </div>

@@ -1,46 +1,63 @@
-.container {
+:host {
+  display: block;
+  font-family: 'Roboto', sans-serif;
+}
+
+.content-container {
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
+  background-color: var(--ion-color-light);
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
   font-size: 24px;
-  font-weight: 300;
+  font-weight: 400;
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   color: var(--ion-color-primary);
+}
+
+.input-wrapper {
+  margin-bottom: 20px;
 }
 
 ion-item {
   --background: var(--ion-color-light);
   --border-radius: 8px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+ion-label {
+  color: var(--ion-color-dark);
 }
 
 ion-input {
   --padding-start: 16px;
+  --border-radius: 8px;
 }
 
 ion-button {
   --border-radius: 8px;
   font-weight: 500;
-}
-
-ion-list {
-  background: transparent;
-}
-
-ion-item {
-  --padding-start: 0;
-  --inner-padding-end: 0;
+  background-color: var(--ion-color-primary);
+  color: white;
 }
 
 .grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   gap: 10px;
-  margin-top: 20px; /* Un poco de espacio arriba de la cuadrícula */
+  margin-top: 20px;
+  max-height: 400px; /* Limitar la altura máxima */
+  overflow-y: auto; /* Permitir el desplazamiento vertical si hay muchos resultados */
+  padding: 10px; /* Relleno interno */
+  background-color: var(--ion-color-light); /* Fondo para la caja de resultados */
+  border-radius: 12px; /* Bordes redondeados */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
 
 .grid-item {
@@ -49,4 +66,13 @@ ion-item {
   background-color: var(--ion-color-light);
   border: 1px solid var(--ion-color-medium);
   border-radius: 8px;
+  transition: background-color 0.3s, transform 0.3s;
+  overflow: hidden; /* Evitar que el texto sobresalga */
+  white-space: nowrap; /* Evitar que los textos se dividan en varias líneas */
+  text-overflow: ellipsis; /* Agregar puntos suspensivos si el texto es muy largo */
+}
+
+.grid-item:hover {
+  background-color: var(--ion-color-primary-tint);
+  transform: translateY(-2px);
 }
